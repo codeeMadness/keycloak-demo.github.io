@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+    <head>
+        <link rel="stylesheet" href="./assets/css/styles.css">
+        <script src="https://keycloak.sbot.pro/js/keycloak.js"></script>
+        <script src="./assets/js/myLogic.js"></script>
+        <style>
+            table {
+                font-family: arial, sans-serif;
+                border-collapse: collapse;
+                width: 500px;
+            }
+            td, th {
+                border: 1px solid;
+                text-align: left;
+                padding: 8px;
+            }
+            tr:nth-child(even) {
+                background-color: #94ab9e;
+                color:black;
+            }
+        </style>
+    </head>
+    <body class="center" onload="initKeycloak()">
+        <div id="header">
+            <h1 id="headerLabel" align="center">Keycloak Demo</h1>
+        </div>
+
+        
+        <div id="table-attr">
+            <table align="center">
+                <tr>
+                    <th style="text-align:center;">Attributes</th>
+                    <th style="text-align:center;">Value</th>
+                </tr>
+                <tr>
+                    <td style="text-align:center;">Username</td>
+                    <td id="row-username" style="text-align:center;">${user.username}</td>
+                </tr>
+                <tr>
+                    <td style="text-align:center;">First Name</td>
+                    <td id="row-firstName" style="text-align:center;">${user.firstName}</td>
+                </tr>
+                <tr>
+                    <td style="text-align:center;">Last Name</td>
+                    <td id="row-lastName" style="text-align:center;">${user.lastName}</td>
+                </tr>
+                <tr>
+                    <td style="text-align:center;">Name</td>
+                    <td id="row-name" style="text-align:center;">${user.fullName}</td>
+                </tr>
+                <tr>
+                    <td style="text-align:center;">Email</td>
+                    <td id="row-email" style="text-align:center;">${user.email}</td>
+                </tr>
+                <tr>
+                    <td style="text-align:center;">Verify Document?</td>
+                    <td id="row-verify" style="text-align:center;">${user.verify-document}</td>
+                </tr>
+            </table>
+        </div>
+        <div class="center" d="content" style="margin-top: 20px;">
+            <div>
+                <textarea rows="5" cols="100" id="ta-token">EMPTY</textarea>
+                <!-- <label style="color: white;">Refresh Token</label>
+                <textarea id="ta-refreshToken">EMPTY</textarea> -->
+            </div>
+            
+            <input type="button" value="Update Token" onclick="refreshToken()" />
+            <input type="button" value="Check Access" onclick="checkAccess()" />
+
+            <div style="margin-top: 5px;">
+                <textarea rows="5" cols="100" id="check-access">ACCESS RESULT</textarea>
+            </div>
+        </div>        
+    </body>
+</html>
