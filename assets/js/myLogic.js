@@ -44,12 +44,14 @@ var checkAccess = async function() {
             },
         });
 
-        // if (!response.ok) {
-        //     throw new Error(`Response status: ${response.status}`);
-        // }
-
         const json = await response.json();
-        document.getElementById('check-access').value = json.body;
+
+        if (!response.ok) {
+            // throw new Error(`Response status: ${response.status}`);
+            document.getElementById('check-access').value = json.message;
+        } else
+            document.getElementById('check-access').value = json.body;
+            
     } catch (error) {
         console.error(error.message);
         document.getElementById('check-access').value = error.message;
