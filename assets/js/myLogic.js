@@ -49,7 +49,7 @@ var checkAccess = async function() {
         }
 
         const json = await response.json();
-        document.getElementById('check-access').value = json;
+        document.getElementById('check-access').value = json.body;
     } catch (error) {
         console.error(error.message);
     }
