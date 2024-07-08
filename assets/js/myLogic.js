@@ -35,10 +35,6 @@ var refreshToken = function() {
     });
 }
 
-var logout = function() {
-    keycloak.logout({"redirectUri":"http://localhost:5500/logout.html"});
-}
-
 var checkAccess = async function() {
     const url = "https://9dry6fle9j.execute-api.ap-southeast-1.amazonaws.com/dev/demo-resource";
     try {
@@ -53,7 +49,7 @@ var checkAccess = async function() {
         }
 
         const json = await response.json();
-        console.log(json);
+        document.getElementById('check-access').value = json;
     } catch (error) {
         console.error(error.message);
     }
